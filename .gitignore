@@ -2,3 +2,6 @@
 titanic_project.iml
 venv/
 .idea
+*.csv
+artifacts/
+.ipynb_checkpoints/
