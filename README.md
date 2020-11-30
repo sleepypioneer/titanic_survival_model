@@ -1,15 +1,15 @@
-# Titanic Project
+# Titanic Project 🚢
 A machine learning app to determine the chance of survival on the Titanic based on various features.
 
-## Development
+## Development 🖥️
 
 This app has been developed with Python 3.8.5 and [streamlit](https://www.streamlit.io/) using [Jupyter notebooks](https://jupyter.org/) to explore the data and build the model.
 
-### Download the data
+### Download the data 💾
 
 The data for this project has not been checked into Github, so you will need to download it locally first. You can download the data from Kaggle [here](https://www.kaggle.com/c/titanic/data) (you will need both the test.csv and train.csv) save these files in the directory: `/model_in_notebook/data/`
 
-### Create and activate a virtual environment
+### Create and activate a virtual environment 🌐
 
 ```sh
 # create the environment
@@ -22,7 +22,7 @@ source ../venv/bin/activate
 venv\Scripts\activate.bat
 ```
 
-### Install dependencies 
+### Install dependencies 🧰
 
 You can install all the necessary dependencies, listed in `requirements.txt` by running the following command:
 
@@ -30,7 +30,7 @@ You can install all the necessary dependencies, listed in `requirements.txt` by 
 pip install -r requirements.txt
 ```
 
-### Running the app locally
+### Running the app locally 🧊
 
 Now that the virtual environment  activated run the following command to run the streamlit app with live reload on save.
 
@@ -45,7 +45,7 @@ This will run the app locally at `http://localhost:8501/`
 
 To stop the service running use `Ctrl c`
 
-### Exploring the notebooks locally
+### Exploring the notebooks locally 📘
 
 You can also open the notebooks exploring the data and building the model. To do this follow the instructions in this [README](./model_in_notebook/README.md)
 
