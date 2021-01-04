@@ -23,7 +23,19 @@ def app() -> None:
     st.title("Please fill in the details below:")
     title = st.selectbox(
         'Title ',
-        ('Miss', 'Rev', 'Master', 'Countess', 'Mrs', 'Mr'))
+        ('Mr', 'Mrs', 'Miss', 'Master', 'Don', 'Rev', 'Dr', 'Mme', 'Ms',
+         'Major', 'Lady', 'Sir', 'Mlle', 'Col', 'Capt', 'Countess',
+         'Jonkheer'))
+
+    male_titles = ['Mr', 'Master', 'Don', 'Rev', 'Major', 'Sir','Col', 'Capt','Jonkheer']
+    female_titles = ['Mrs', 'Miss', 'Mme', 'Ms', 'Lady', 'Mlle','Countess']
+
+    x0_Mr, x0_Mrs = 0,0
+    if title in male_titles:
+        x0_Mr = 1
+    elif title in female_titles:
+        x0_Mrs = 1
+
     first_name = st.text_input(
         "First name"
     )
@@ -33,10 +45,76 @@ def app() -> None:
     age = st.number_input(
         "Age (in whole years):"
     )
+    age = int(age)
+
+    travelling_with_family = st.selectbox(
+        'Will you be traveling with family members? How many including yourself with your group be?',
+        ('One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
+         'Ten', 'Eleven'))
+
+    familySize = 1
+
+    if travelling_with_family == 'Two':
+        familySize = 2
+    elif travelling_with_family == 'Three':
+        familySize = 3
+    elif travelling_with_family == 'Four':
+        familySize = 3
+    elif travelling_with_family == 'Five':
+        familySize = 3
+    elif travelling_with_family == 'Six':
+        familySize = 3
+    elif travelling_with_family == 'Seven':
+        familySize = 3
+    elif travelling_with_family == 'Eight':
+        familySize = 3
+    elif travelling_with_family == 'Nine':
+        familySize = 3
+    elif travelling_with_family == 'Ten':
+        familySize = 3
+    elif travelling_with_family == 'Eleven':
+        familySize = 3
+    else:
+        familySize = 0
+
+    ticket = st.selectbox(
+        'Select a ticket for your journey',
+        ('1st Class - 500', '1st Class - 256', '2nd Class - 135', '2nd Class - 35', '3rd Class - 25', '3rd Class - 10'))
+
+    p_class = 3
+    fare = 0
+    if ticket == '1st Class - 500':
+        p_class = 1
+        fare = 500
+    elif ticket == '1st Class - 256':
+        p_class = 1
+        fare = 256
+    elif ticket == '2nd Class - 135':
+        p_class = 2
+        fare = 135
+    elif ticket == '2nd Class - 35':
+        p_class = 2
+        fare = 35
+    elif ticket == '3rd Class - 25':
+        p_class = 3
+        fare = 25
+    elif ticket == '3rd Class - 10':
+        p_class = 3
+        fare = 10
+    else:
+        p_class = 3
+        fare = 0
 
     sex = st.selectbox(
         'Sex (In records of the name this was recorded as male or female)',
         ('Female', 'Male'))
+
+    x1_female, x1_male = 0, 0
+
+    if sex == 'Female':
+        x1_female = 1
+    elif sex == 'Male':
+        x1_male = 1
 
     # traveling with children or parents
     # Traveling with sibling or spouse
@@ -45,21 +123,22 @@ def app() -> None:
 
     # Create dataframe
     character = pd.DataFrame(
-        [[3.000000, 14.458300, 29.699118, 0.000000, 1.000000, 1.000000, 1.000000, 0.000000, 0.000000, 0.000000,
-          0.000000,
-          0.000000, 0.000000, 0.000000]],
-        columns=['Pclass', 'Fare', 'Age', 'SibSp', '21', '71', '27', '30', '50', '1', '41', '2', '22', '26']
+        [[p_class, x1_female, x1_male, age, familySize, fare, x0_Mr, x0_Mrs]],
+        columns=[
+            'Pclass', 'x1_female', 'x1_male',
+            'Age', 'FamilySize', 'Fare', 'x0_Mr', 'x0_Mrs'
+        ]
     )
     # Load model
-    titanic_model = joblib.load("./artifacts/titanic_clf.joblib")
+    titanic_model = joblib.load("./artifacts/titanic_refined_clf.joblib")
 
     # Run predictions
-    if st.button("Predict chance of survical"):
+    if st.button("Predict chance of survival"):
         prediction = titanic_model.predict(character)
         survival = 'Died'
         if prediction == [1]:
             survival = 'Survived'
-        st.title(f'Prediction: {survival}')
+        st.title(f'Prediction: {survival} \n Model has 83% accuracy')
         # st.text("You survived!")
         # y = feature_engineering.transform([review])
         # prediction = classifier.predict(y)
