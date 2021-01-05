@@ -143,21 +143,6 @@ def app() -> None:
         if prediction == [1]:
             survival = 'Survived'
         st.title(f'Prediction: {survival} \n Model has 83% accuracy')
-        # st.text("You survived!")
-        # y = feature_engineering.transform([review])
-        # prediction = classifier.predict(y)
-        # probability = np.round(np.amax(classifier.predict_proba(y)), 2)
-        #
-        # def convert(prediction: int) -> str:
-        #     return "Positive" if prediction == 1 else "Negative"
-        #
-        # if review != write_here:
-        #     st.success(
-        #         f"*Sentiment prediction*: **{convert(prediction).upper()}** with probability {100 * probability}%"
-        #     )
-        #     st.balloons()
-        # else:
-        #     st.error("You need to input a review for classification!")
     else:
         st.info(
             "**Enter the fields* above and **press the button** to predict the chance of survival."
