@@ -13,11 +13,11 @@ def app() -> None:
 
     st.sidebar.info(
         "Enter information in the form to create a fictional character, the model will then determine the chance of them surviving on the HMS Titanic.")
-    image_1 = Image.open("./imgs/titanic-dock.jpg")
-    st.sidebar.image(image_1, caption="HMS Titanic in the dock", use_column_width=True)
-
-    image_2 = Image.open("./imgs/titanic-lifeboat.jpg")
-    st.sidebar.image(image_2, caption="Survivers from the Titanic in lifeboats", use_column_width=True)
+    # image_1 = Image.open("./imgs/titanic-dock.jpg")
+    # st.sidebar.image(image_1, caption="HMS Titanic in the dock", use_column_width=True)
+    #
+    # image_2 = Image.open("./imgs/titanic-lifeboat.jpg")
+    # st.sidebar.image(image_2, caption="Survivers from the Titanic in lifeboats", use_column_width=True)
 
     # Input section
     st.title("Please fill in the details below:")
