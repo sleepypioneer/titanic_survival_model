@@ -1,5 +1,5 @@
 # Titanic Project 🚢
-A machine learning app to determine the chance of survival on the Titanic based on various features.
+A machine learning app to determine the chance of survival on the Titanic based on various features. Try it live at https://share.streamlit.io/sleepypioneer/titanic_survival_model/main/src/app.py
 
 ## Development 🖥️
 
@@ -53,3 +53,4 @@ You can also open the notebooks exploring the data and building the model. To do
 
 ### Deployment
 
+Currently, this app is deployed with Streamlit sharing :heart:
