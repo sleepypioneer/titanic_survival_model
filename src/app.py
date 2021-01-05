@@ -5,19 +5,22 @@ import typer
 from PIL import Image
 import pandas as pd
 import joblib
+import os
+
+CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 
 
 def app() -> None:
     # Title and info
-    st.sidebar.title("Survival on the Titanic")
+    st.sidebar.title('Survival on the Titanic:')
 
     st.sidebar.info(
         "Enter information in the form to create a fictional character, the model will then determine the chance of them surviving on the HMS Titanic.")
-    # image_1 = Image.open("./imgs/titanic-dock.jpg")
-    # st.sidebar.image(image_1, caption="HMS Titanic in the dock", use_column_width=True)
-    #
-    # image_2 = Image.open("./imgs/titanic-lifeboat.jpg")
-    # st.sidebar.image(image_2, caption="Survivers from the Titanic in lifeboats", use_column_width=True)
+    image_1 = Image.open(os.path.join(CURR_DIR, 'imgs/titanic-dock.jpg'))
+    st.sidebar.image(image_1, caption="HMS Titanic in the dock", use_column_width=True)
+
+    image_2 = Image.open(os.path.join(CURR_DIR, 'imgs/titanic-lifeboat.jpg'))
+    st.sidebar.image(image_2, caption="Survivers from the Titanic in lifeboats", use_column_width=True)
 
     # Input section
     st.title("Please fill in the details below:")
@@ -130,7 +133,8 @@ def app() -> None:
         ]
     )
     # Load model
-    titanic_model = joblib.load("./artifacts/titanic_refined_clf.joblib")
+    path_to_model = os.path.join(CURR_DIR, 'artifacts/titanic_refined_clf.joblib')
+    titanic_model = joblib.load(path_to_model)
 
     # Run predictions
     if st.button("Predict chance of survival"):
